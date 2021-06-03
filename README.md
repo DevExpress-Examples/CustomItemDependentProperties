@@ -18,3 +18,7 @@ We handle the following [ICustomItemMetaData.optionsPanelSections](https://docs.
 The `changeVisibleState` and `changeDisabledState` methods (see [CustomItem.js](CS/Scripts/CustomItem.js)) use the API of the [dxForm](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxForm/) widget to apply visual state changes. Item content is rendered based on custom property values in the [CustomItemViewer.renderContent](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.CustomItemViewer?p=netframework#js_devexpress_dashboard_customitemviewer_rendercontent_element_changeexisting_) method.
 
 ![](CS/screenshot.png)
+
+## Documentation
+
+* [Create Custom Properties](https://docs.devexpress.com/Dashboard/401702/web-dashboard/ui-elements-and-customization/create-custom-properties)
