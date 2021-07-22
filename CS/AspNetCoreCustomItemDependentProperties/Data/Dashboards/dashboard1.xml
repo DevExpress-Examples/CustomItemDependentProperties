@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Sample Dashboard" />
+  <DataSources>
+    <SqlDataSource Name="SalesPerson" ComponentName="DataSource1" DataProcessingMode="Client">
+      <Connection Name="NWindConnectionString" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="SalesPerson">
+        <Tables>
+          <Table Name="SalesPerson" />
+        </Tables>
+        <Columns>
+          <AllColumns Table="SalesPerson" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Tree View 1" DataSource="DataSource1" DataMember="SalesPerson" AutoExpand="true">
+      <DataItems>
+        <Dimension DataMember="CategoryName" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </TreeView>
+    <CustomItem ComponentName="customItemDashboardItem1" Name="Data Aware Item 1" DataSource="DataSource1" DataMember="SalesPerson" CustomItemType="dataAwareItem">
+      <CustomProperties>
+        <backColorEnabledProperty>true</backColorEnabledProperty>
+        <backColorProperty>Blue</backColorProperty>
+        <rowBorderVisibleProperty>true</rowBorderVisibleProperty>
+        <rowBorderWeightProperty>5</rowBorderWeightProperty>
+      </CustomProperties>
+      <DataItems>
+        <Dimension DataMember="CategoryName" DefaultId="DataItem0" />
+      </DataItems>
+      <SliceTables>
+        <SliceTable Name="SliceTable1">
+          <Dimensions>
+            <Dimension DefaultId="DataItem0" />
+          </Dimensions>
+        </SliceTable>
+      </SliceTables>
+      <ColoringDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </ColoringDimensions>
+      <CustomMetadata>
+        <dimensionValue ItemType="Dimension" DefaultId="DataItem0" />
+      </CustomMetadata>
+    </CustomItem>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Weight="100">
+      <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="76.64812270047432" />
+      <LayoutItem DashboardItem="customItemDashboardItem1" Weight="123.35187729952568" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
