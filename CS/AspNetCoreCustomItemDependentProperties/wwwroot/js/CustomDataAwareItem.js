@@ -1,4 +1,4 @@
-﻿var DataAwareItem = (function () {
+﻿window.DataAwareItem = (function () {
     var svgIcon = '<svg id="dataAwareItemIcon" viewBox="0 0 24 24"><path stroke="#ffffff" fill="#4842f4" d="M12 2 L2 22 L22 22 Z" /></svg>';
     var Dashboard = DevExpress.Dashboard;
 
@@ -114,74 +114,75 @@
         title: "Data Aware Item"
     };
 
-    function DataAwareItemViewer(model, $container, options) {
-        Dashboard.CustomItemViewer.call(this, model, $container, options);
-    }
-
-    DataAwareItemViewer.prototype = Object.create(Dashboard.CustomItemViewer.prototype);
-    DataAwareItemViewer.prototype.constructor = DataAwareItemViewer;
-    DataAwareItemViewer.prototype.renderContent = function ($element, changeExisting) {
-        var element = $element.jquery ? $element[0] : $element;
-        while (element.firstChild)
-            element.removeChild(element.firstChild);
-        var clientData = this._getDataSource();
-        var that = this;
-        clientData.forEach(function (item) {
-            var div = document.createElement("div");
-            div.style.color = item.color;
-            div.style["text-align"] = "center";
-            div.innerText = item.dimensionDisplayText;
-
-            element.appendChild(div);
-
-            if (that._getRowBorderVisibleProperty()){
-                var hr = document.createElement("hr");
-                hr.style.height = that._getRowBorderWeightProperty() + "px";
-                element.appendChild(hr);
-            }
-        });
-
-        if (this._getBackColorEnabledProperty())
-            element.style.background = this._getBackColorProperty();
-        else
-            element.style.background = "";
-
-        element.style.overflow = "auto";
-    };
-    DataAwareItemViewer.prototype._getDataSource = function () {
-        var clientData = [];
-        this.iterateData(function (dataRow) {
-            clientData.push({
-                dimensionDisplayText: dataRow.getDisplayText("dimensionValue")[0] || "",
-                color: dataRow.getColor()[0]
-            });
-        });
-        return clientData;
-    };
-    DataAwareItemViewer.prototype._getBackColorProperty = function () {
-        switch (this.getPropertyValue("backColorProperty")) {
-            case "Red": return "rgb(255,220,200)";
-            case "Blue": return "rgb(135,206,235)";
+    class DataAwareItemViewer extends Dashboard.CustomItemViewer {
+        constructor(model, $container, options) {
+            super(model, $container, options);
         }
-    };
 
-    DataAwareItemViewer.prototype._getBackColorEnabledProperty = function () {
-        return this.getPropertyValue("backColorEnabledProperty");
-    };
+        renderContent($element, changeExisting) {
+            var element = $element.jquery ? $element[0] : $element;
+            while (element.firstChild)
+                element.removeChild(element.firstChild);
+            var clientData = this._getDataSource();
+            var that = this;
+            clientData.forEach(function (item) {
+                var div = document.createElement("div");
+                div.style.color = item.color;
+                div.style["text-align"] = "center";
+                div.innerText = item.dimensionDisplayText;
 
-    DataAwareItemViewer.prototype._getRowBorderWeightProperty = function () {
-        return this.getPropertyValue("rowBorderWeightProperty");
-    };
+                element.appendChild(div);
 
-    DataAwareItemViewer.prototype._getRowBorderVisibleProperty = function () {
-        return this.getPropertyValue("rowBorderVisibleProperty");
-    };
+                if (that._getRowBorderVisibleProperty()){
+                    var hr = document.createElement("hr");
+                    hr.style.height = that._getRowBorderWeightProperty() + "px";
+                    element.appendChild(hr);
+                }
+            });
 
-    function DataAwareItem(dashboardControl) {
-        DevExpress.Dashboard.ResourceManager.registerIcon(svgIcon);
-        this.name = "dataAwareItem";
-        this.metaData = dataAwareItemMetaData;
-        this.createViewerItem = function (model, $element, content) {
+            if (this._getBackColorEnabledProperty())
+                element.style.background = this._getBackColorProperty();
+            else
+                element.style.background = "";
+
+            element.style.overflow = "auto";
+        }
+        _getDataSource() {
+            var clientData = [];
+            this.iterateData(function (dataRow) {
+                clientData.push({
+                    dimensionDisplayText: dataRow.getDisplayText("dimensionValue")[0] || "",
+                    color: dataRow.getColor()[0]
+                });
+            });
+            return clientData;
+        }
+        _getBackColorProperty() {
+            switch (this.getPropertyValue("backColorProperty")) {
+                case "Red": return "rgb(255,220,200)";
+                case "Blue": return "rgb(135,206,235)";
+            }
+        }
+
+        _getBackColorEnabledProperty() {
+            return this.getPropertyValue("backColorEnabledProperty");
+        }
+
+        _getRowBorderWeightProperty() {
+            return this.getPropertyValue("rowBorderWeightProperty");
+        }
+
+        _getRowBorderVisibleProperty() {
+            return this.getPropertyValue("rowBorderVisibleProperty");
+        }
+    }
+    class DataAwareItem {
+        constructor(dashboardControl) {
+            DevExpress.Dashboard.ResourceManager.registerIcon(svgIcon);
+            this.name = "dataAwareItem";
+            this.metaData = dataAwareItemMetaData;
+        }
+        createViewerItem(model, $element, content) {
             return new DataAwareItemViewer(model, $element, content);
         }
     }
