@@ -8,10 +8,6 @@
 
 This example shows how to implement a [Custom Item](https://docs.devexpress.com/Dashboard/119837/web-dashboard/client-side-customization/custom-item/create-a-data-aware-item?p=netframework) with [Custom Properties](https://docs.devexpress.com/Dashboard/401702/web-dashboard/client-side-customization/custom-properties) that depend on each other. 
 
-## Files to Look At
-
-* [CustomDataAwareItem.js](\CS\AspNetCoreCustomItemDependentProperties\wwwroot\js\CustomDataAwareItem.js)
-
 The custom item contains the following custom properties:
 
 - `backColorEnabledProperty`
@@ -32,6 +28,10 @@ The control handles the following [ICustomItemMetaData.optionsPanelSections](htt
 - [SectionOptions.onFieldDataChanged](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.Designer.SectionOptions#js_devexpress_dashboard_designer_sectionoptions_onfielddatachanged) - for configuration after changes.
 
 The `changeVisibleState` and `changeDisabledState` methods use the API of the DevExtreme [dxForm](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxForm/) widget to apply visual state changes. Item content is rendered based on custom property values in the [CustomItemViewer.renderContent](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.CustomItemViewer?p=netframework#js_devexpress_dashboard_customitemviewer_rendercontent_element_changeexisting_) method.
+
+## Files to Review
+
+* [CustomDataAwareItem.js](\CS\AspNetCoreCustomItemDependentProperties\wwwroot\js\CustomDataAwareItem.js)
 
 ## Documentation
 
