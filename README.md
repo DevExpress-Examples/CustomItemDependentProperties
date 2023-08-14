@@ -31,7 +31,7 @@ The `changeVisibleState` and `changeDisabledState` methods use the API of the De
 
 ## Files to Review
 
-* [CustomDataAwareItem.js](\CS\AspNetCoreCustomItemDependentProperties\wwwroot\js\CustomDataAwareItem.js)
+* [CustomDataAwareItem.js](CS/AspNetCoreCustomItemDependentProperties/wwwroot/js/CustomDataAwareItem.js)
 
 ## Documentation
 
