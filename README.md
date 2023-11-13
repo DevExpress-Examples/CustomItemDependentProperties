@@ -4,6 +4,12 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
+<!-- default badges list -->
+![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/272974544/22.1.4%2B)
+[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T900502)
+[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
+<!-- default badges end -->
+
 ## Dashboard for ASP.NET Core - How to implement dependent custom properties in a custom item
 
 This example shows how to implement a [Custom Item](https://docs.devexpress.com/Dashboard/119837/web-dashboard/client-side-customization/custom-item/create-a-data-aware-item?p=netframework) with [Custom Properties](https://docs.devexpress.com/Dashboard/401702/web-dashboard/client-side-customization/custom-properties) that depend on each other. 
@@ -31,7 +37,7 @@ The `changeVisibleState` and `changeDisabledState` methods use the API of the De
 
 ## Files to Review
 
-* [CustomDataAwareItem.js](CS/AspNetCoreCustomItemDependentProperties/wwwroot/js/CustomDataAwareItem.js)
+* [CustomDataAwareItem.js](/CS/AspNetCoreCustomItemDependentProperties/wwwroot/js/CustomDataAwareItem.js)
 
 ## Documentation
 
